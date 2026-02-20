@@ -1,16 +1,61 @@
-# React + Vite
+# Ristruttura Market - Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Demo full-stack per mettere in contatto:
+- utenti che richiedono preventivi di ristrutturazione
+- aziende che propongono offerte in un mercato libero
 
-Currently, two official plugins are available:
+Frontend: React + Vite
+Backend locale: Python + FastAPI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pagine front-end
 
-## React Compiler
+- `/#/` Mercato: lista richieste con numero offerte e miglior prezzo
+- `/#/richiedi` Richiedi preventivo (utente)
+- `/#/aziende` Inserisci preventivo (azienda)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Avvio demo completo (Windows)
 
-## Expanding the ESLint configuration
+Dalla root progetto:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```powershell
+cd C:\Users\User\Desktop\mio-sito
+.\run-demo.ps1
+```
+
+Lo script:
+- crea (se serve) `backend/.venv`
+- installa dipendenze backend
+- avvia FastAPI su `http://127.0.0.1:8000`
+- avvia frontend Vite
+
+## Avvio manuale
+
+Backend:
+
+```powershell
+cd backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn app:app --reload --host 127.0.0.1 --port 8000
+```
+
+Frontend (in un altro terminale):
+
+```powershell
+cd C:\Users\User\Desktop\mio-sito
+npm.cmd install
+npm.cmd run dev
+```
+
+## Deploy front-end su GitHub Pages
+
+Il backend e locale e non va pubblicato.
+
+```powershell
+npm.cmd run deploy
+```
+
+## Nota Git
+
+La cartella `backend/` e ignorata in `.gitignore`, quindi su GitHub finiscono solo file front-end (piu file di supporto progetto).
